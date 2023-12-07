@@ -1,0 +1,38 @@
+class Solution:
+    def majorityElement(self, nums: list[int]) -> list[int]:
+        # Create a Counter to store the count of each element
+        element_count = Counter(nums)
+        
+        majority_elements = []
+        threshold = len(nums) // 3
+        
+        # Iterate through the element count to identify majority elements
+        for element, count in element_count.items():
+            # Check if the element count is greater than the threshold
+            if count > threshold:
+                majority_elements.append(element)
+        
+        return majority_elements
+
+
+Explaination:
+Create an HashMap to store the count of each element.
+Iterate through the input array and increment the count for each element in the HashMap.
+Create a vector to store the result and Calculate the threshold count (1/3 of the array size).
+Iterate through the HashMap and for each element:
+Check if the element count is greater than the threshold.
+If yes, add the element to the result vector.
+Return the vector containing the identified majority elements.
+Complexity
+Time complexity: O(N)O(N)O(N)
+Since we are iterating over the array then it's a linear complexity and we are iterating over the HashMap that also can be linear complexity, then the total complexity is 2 * N which is O(N)
+Space complexity: O(N)O(N)O(N)
+Since we are storing the count of occurencies for each unique element in the nums array and the array's elements can all be unique then it is linear complexity which is O(N).
+1. Boyer-Moore Majority Voting Solution
+Create variables to track counts and candidates for potential majority elements.
+First Pass - Find Potential Majority Elements:
+Iterate through the input array and identify potential majority element candidates.
+Update the candidates based on specific conditions.
+Maintain counts for each candidate.
+Second Pass - Count Occurrences:
+Iterate through the input array again to count the occurrences of the potential majority elements.
